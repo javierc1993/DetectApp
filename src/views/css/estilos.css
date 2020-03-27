@@ -289,25 +289,25 @@ h1{
 /*login**/
 
 .login{
-    background : url('../media/ingresar.jpg');
+    background : url('ingresar.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .uno, .dos, .tres, .cuatro{
-    background : url('../media/fondo5small.png');
+    background : url('fondo5small.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 #operador{
-    background : url('../media/fondo5small.png');
+    background : url('fondo5small.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 #actualizar{
-    background : url('../media/fondo5small.png');
+    background : url('fondo5small.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -315,7 +315,7 @@ h1{
 /*footpage*/
 
 .footpage{
-    background : url('../media/footpage.jpg');
+    background : url('footpage.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
