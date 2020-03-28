@@ -11,4 +11,4 @@ const TaskSchema= new Schema({ //aqui van los campos que tendra cada tarea "colu
     }
 
 });
-module.exports = mongoose.model('task', TaskSchema); //aqui exporto el esquema a un metodo de moongose llamado model para que tome ese esquema y utilizarlo para guardar datos en una colección de objtos llamada task 
+module.exports = mongoose.model('tasks', TaskSchema); //aqui exporto el esquema a un metodo de moongose llamado model para que tome ese esquema y utilizarlo para guardar datos en una colección de objtos llamada task 

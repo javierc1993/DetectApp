@@ -4,7 +4,20 @@
 			text-transform: uppercase;
 			font-size: 17px;
 }
+.header{
 
+        content: "";
+        display: table;
+        clear: both;
+    
+}
+.header .crud-inicio {
+
+top: 30% !important;
+float: left;
+padding: 10%;
+background-color: #13232f;
+}
 
 form {
     align-content: center;
@@ -293,6 +306,7 @@ h1{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 .uno, .dos, .tres, .cuatro{
     background : url('fondo5small.png');

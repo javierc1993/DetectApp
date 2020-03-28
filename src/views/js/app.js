@@ -10,7 +10,7 @@ loopBottom:true,
 navigation: true, // Muesta la barra de navegación.
 menu: '#menu', // Menu de navegación.
 anchors: ['inicio', 'ingresa','unete', 'contacto'], // Anclas, las usamos para identificar cada seccion y poder acceder a ellas con el menu.
-navigationTooltips: ['Inicio', 'Ingresa', 'Unete', 'Contacto'], // Tooltips que mostrara por cada boton.
+navigationTooltips: ['inicio', 'Ingresa', 'Unete', 'Contacto'], // Tooltips que mostrara por cada boton.
 showActiveTooltip: false,
 afterLoad: function(origin, destination){
 if (destination.anchor== 'contacto') {

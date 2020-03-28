@@ -1,0 +1,22 @@
+
+<div class="container">
+        <div class="row">
+ <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <form action="/edit/<%= task._id%>" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="title" id="" placeholder="Nombre de tu tarea" class="form-control" value="<%=task.title%>">
+                    </div>
+                    <div class="form-group">
+                            <textarea name="description" id="" cols="80" class='form-control' placeholder="inserte la descripción"><%=task.description%></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Agendar actividad
+                    </button>
+                </form>
+            </div>
+        </div>
+     </div>
+
+    

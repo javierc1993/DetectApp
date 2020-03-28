@@ -1,54 +1,64 @@
+<%- include('partials/_header.ejs') %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <!--motor de plantilla definida para agregarle funcionalidades al HtMl-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inicio</title>
-    <script src="https://kit.fontawesome.com/8b93d6230e.js" ></script>
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Oswald&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css">
-	<link rel="stylesheet" href="estilos.css">
-    
-</head>
-<body>
-    <nav class="nav">
-		<a href="#inicio" class="marca">RecyClick</a>
-		<ul id=menu class=menu>
-			<li data-menuanchor="inicio" class='active'>
-				<a href="#inicio">Inicio</a>
-			</li>
-			<li data-menuanchor="ingresa" >
-					<a href="#ingresa">Ingresa</a>
-			</li>
-			<li data-menuanchor="unete">
-						<a href="#unete">Unete</a>
-			</li>
-			<li data-menuanchor="contacto">
-					<a href="#contacto">Contacto</a>
-			</li>
 
-		</ul>
-	</nav>
 	<main id="fullpage">
+			
 		<header class="section header">
-			<div class="contenedor-titulo">
-				<h1 class="titulo">
-					<span class='texto-verde'>RecyClick</span>
-				</h1>
-				<p class="p">
-					<span class='texto-negro'>
-						recíclalo en un click
-					</span>
-
-				</p>
-
-			</div>
-			<div class="contenedor-icono">
-				<p><a href="#ingresa" class="texto-naranja"> <i class="fas fa-chevron-down"></i></a></p>
-			</div>
+				
+		 	<div class="container">
+			 	<div class="row">
+					 <!--form-->
+					 <div class="col-md-5">
+						<div class="card">
+							<div class="card-body">
+								<form action="/add" method="POST">
+									<div class="form-group">
+										<input type="text" name="title" id="" placeholder="Nombre de tu tarea" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="description" id="" cols="80" class='form-control' placeholder="inserte la descripción"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary btn-block">
+										Agendar actividad
+									</button>
+								</form>
+							</div>
+						</div>
+					 </div>
+					 <!--lista-->
+					 <div class="col-md-7">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<th>N°</th>
+								<th>Titulo</th>
+								<th>Descripción</th>
+								<th>Opciones</th>
+							</thead>
+							<tbody><!--de aqui hacia abajo se recorre el objeto tasks que trae toda la info de la base de datos para mostrarlo-->
+								<% for(var i=0; i<tasks.length; i++) { %>
+										<tr>
+												<td><%= i + 1%></td><!--genera un numero de ingreso de acuerdo a la posicion en la que esta en el array ejemplo la posicion o +1 es la primera ingresada-->
+												<td><strong><%= tasks[i].title %></strong></td><!--asi se trae la info dependiendo del nombre definido en el schema-->
+												<td><%= tasks[i].description %></td>
+												<td>
+												  <a
+													class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+													href="/turn/<%= tasks[i]._id %>">Done</a><!--condicional donde segun el estado se cambia de color el boton-->
+												  <a href="/delete/<%= tasks[i]._id %>"
+													class="btn btn-danger">
+													Delete
+												  </a>
+												  <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">
+													Edit
+												  </a>
+												</td>
+											  </tr>
+								<%}%>
+							</tbody>
+						</table>
+					 </div>
+				 </div>
+		 	</div>
 		</header>
 		<!-- <section class="section Productos">
 			<div class="contenedor-titulo">
@@ -62,92 +72,12 @@
 			</video>
 		</section> -->
 		<section class="section login">	
-		<div id="login">   
-          
-          
-          <form action="php/validacion.php" class="formulario" method="post">
-          <h1 class="h1">Hola de Nuevo!</h1>
-            <div class="field-wrap">
-            <label>Correo:<span class="req"></span></label>
-            <input type="email"required autocomplete="off" name="mail">
-          </div>
-          
-          <div class="field-wrap">
-            <label >
-              Contraseña
-            </label>
-            <input type="password"required autocomplete="off" name="pass">
-          </div>
-          
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-          
-          <button class="button button-block">Inicio de Sesión</button>
-          
-          </form>
-
-        </div>
-        
-      </div>
-		</section>
+			login
+      
+			</section>
 	<section class="section login">
 			
-        <div id="signup">   
-          
-          <form action="php/registro.php" method="post" class="form">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                Nombres<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" name="name" />
-            </div>
-        
-            <div class="field-wrap">
-              <label>
-               Apellidos<span class="req">*</span>
-              </label>
-              <input type="text"required autocomplete="off" name="lastname">
-            </div>
-		  </div>
-		  <div class="field-wrap">
-            <label>
-              Identificación<span class="req">*</span>
-            </label>
-            <input type="identificacion"required autocomplete="off" name="identificacion">
-		  </div>
-		  <div class="field-wrap">
-            <label>
-              Dirección<span class="req">*</span>
-            </label>
-            <input type="address"required autocomplete="off" name="address">
-		  </div>
-		  <div class="field-wrap">
-            <label>
-              telefono<span class="req">*</span>
-            </label>
-            <input type="telephone"required autocomplete="off" name="telephone">
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Email<span class="req">*</span>
-            </label>
-            <input type="email"required autocomplete="off"name="email">
-          </div>
-          
-          <div class="field-wrap">
-            <label>
-              Elige una contraseña<span class="req">*</span>
-            </label>
-            <input type="password"required autocomplete="off" name="password">
-          </div>
-          
-          <button type="submit" class="button button-block">Registrate</button>
-		</div>
-          </form>
-
-		</div>
+        login2
 	</section>
 	<footer class="section footpage">
 			<h2 class="texto-blanco">SIGUENOS EN REDES SOCIALES</h2>
@@ -159,7 +89,4 @@
 	</footer>
 	</main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js"></script>
-	<script src="app.js"></script>
-</body>
-</html>
+    <%- include('partials/_footer.ejs') %>
