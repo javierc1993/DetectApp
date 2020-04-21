@@ -1,0 +1,20 @@
+<%- include('partials/_header.ejs') %>
+
+				<div class="card-deck mb-3 text-center">
+					
+						<% for(var j=0; j<repetidos.length; j++) { %>
+								<div class="card mb-4 box-shadow">
+										<% let dir_ip  %>
+										<% dir_ip = repetidos[j]%>
+								<a href="/ipseccion/<%=dir_ip%>/<%=subseccion%>"
+								class="btn btn-danger">
+								<%=repetidos[j]%>
+								</a>
+								</div>
+								<%}%>
+				</div>
+		 	
+				
+		 	
+    <%- include('partials/_footer.ejs') %>
+    

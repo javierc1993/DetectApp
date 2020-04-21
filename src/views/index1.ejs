@@ -1,0 +1,173 @@
+<%- include('partials/_header.ejs') %>
+
+
+	<main id="fullpage">
+			
+		<header class="section header">
+				
+		 	<div class="container-fluid">
+			 	<div class="row">
+					 <!--form
+					 <div class="col-md-2">
+						<div class="card">
+							<div class="card-body">
+									
+								<form action="/add" method="POST">
+									<div class="form-group">
+										<input type="text" name="username" id="" placeholder="Nombre del Estudiante" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="dir_ip" id=""  class='form-control' placeholder="inserte ip"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="text" name="answers" id="" placeholder="Respuestas" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="course" id=""  class='form-control' placeholder="curso"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="text" name="session" id="" placeholder="Sesión" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="date" id=""  class='form-control' placeholder="Fecha"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="text" name="unit" id="" placeholder="Unidad" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="name" id=""  class='form-control' placeholder="name"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="text" name="section" id="" placeholder="section" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="subsection" id=""  class='form-control' placeholder="Subseccion"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="text" name="time" id="" placeholder="Nombre de tu tarea" class="form-control">
+									</div>
+									<div class="form-group">
+											<textarea name="page" id=""  class='form-control' placeholder="Página"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary btn-block">
+										Crear estudiante
+									</button>
+								</form>
+							</div>
+						</div>
+					 </div>-->
+					 <!--lista-->
+					 <div class="col-md-12">
+							
+							
+						<table class="table table-bordered table-hover">
+							<thead>
+								<th>N°</th>
+								<th>Estudiante</th>
+								<th>Dir IP</th>
+								<th>Respuesta</th>
+								<% for(var j=0; j<tasks.length; j++) { %>
+								
+											   
+										
+										<%}%>
+									
+								<th>Curso</th>
+								<th>Cod Sesión</th>
+								<th>Fecha</th>
+								<th>Unidad</th>
+								<th>Actividad</th>
+								<th>Sección</th>
+								<th>Subsección</th>
+								<th>Hora</th>
+								<th>Página</th>
+							</thead>
+							<tbody><!--de aqui hacia abajo se recorre el objeto tasks que trae toda la info de la base de datos para mostrarlo-->
+								<a href="/seccion/a1738791ea634978b046a644f2a4e02a"
+									class="btn btn-danger">
+									examenModulo2
+								  </a>
+								  
+								  <a href="/seccion/bdf831fafb714e45a22eec3b4a4b23d9"
+									class="btn btn-danger">
+									Cuest2Mod3
+								  </a>
+								  <% let prueba , pruebas; %>
+								 
+								  
+								  <% for(var i=0; i<tasks.length; i++) { %>
+										<% let prueba , pruebas; %>
+										<% prueba = tasks[i].answers.split('&');%>
+										
+										
+										
+										<tr>
+												<td><%= i + 1%></td><!--genera un numero de ingreso de acuerdo a la posicion en la que esta en el array ejemplo la posicion o +1 es la primera ingresada-->
+												<td><%= tasks[i].username %></td><!--asi se trae la info dependiendo del nombre definido en el schema-->
+												<td><%= tasks[i].dir_ip %></td>
+												<% for(var j=0; j<prueba.length; j++) {%>
+												<% answer_check=prueba[j].split('=');%>
+												<%var uniqs = answer_check.filter(function(item, index, array) {%>
+													<%return array.indexOf(item) === index;%>
+												  <%});%>
+												<td>prueba+<%=uniqs%></td> 
+												<td><%=answer_check[1]%></td>
+												<%}%> 
+												<td><%= tasks[i].course %></td>
+												<td><%= tasks[i].session %></td>
+												<td><%= tasks[i].date %></td>
+												<td><%= tasks[i].unit %></td>
+												<td><%= tasks[i].name %></td>
+												<td><%= tasks[i].section %></td>
+												<td><%= tasks[i].subsection %></td>
+												<td><%= tasks[i].time %></td>
+												<td><%= tasks[i].page %></td>
+											<!--	<td>
+												  <a
+													class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+													href="/turn/<%= tasks[i]._id %>">Done</a>condicional donde segun el estado se cambia de color el boton
+												  <a href="/delete/<%= tasks[i]._id %>"
+													class="btn btn-danger">
+													Delete
+												  </a>
+												  <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">
+													Edit
+												  </a>
+												</td>-->
+											  </tr>
+											  
+								<%}%>
+							</tbody>
+						</table>
+					 </div>
+				 </div>
+
+				 <div class="row">
+					<div class="col-md-8">.col-md-8</div>
+					<div class="col-md-4">.col-md-4</div>
+				 </div>
+		 	</div>
+		</header>
+		<!-- <section class="section Productos">
+			<div class="contenedor-titulo">
+				<h1 class="titulo"><span class="texto-verde">
+						Productos
+					</span></h1>
+			</div>
+
+			<video loop muted data-autoplay class="bg-video">
+				<source src="media/Reusa.mp4" type="video/mp4">
+			</video>
+		</section> -->
+		
+	<footer class="section footpage">
+			<h2 class="texto-blanco">SIGUENOS EN REDES SOCIALES</h2>
+			<p class="redes-sociales">
+				<a href="" class="facebook"><i class="fab fa-facebook-square"></i></a>
+				<a href="" class="instagram"><i class="fab fa-instagram"></i></a>
+				<a href="" class="twitter"><i class="fab fa-twitter-square"></i></a>
+			</p>
+	</footer>
+	</main>
+
+    <%- include('partials/_footer.ejs') %>

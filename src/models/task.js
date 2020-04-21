@@ -3,12 +3,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;//propiedad que nos permite definir como van a lucir los datos
 
 const TaskSchema= new Schema({ //aqui van los campos que tendra cada tarea "columnas de las tablas"
-    title: String,  //aqui la forma va clave:valor , clave es el nombre del campo y valor ps el tipo de valor
-    description: String,
-    status:{ //aqui en lugar de ponerle un valor le pongo un objeto para ue arranque el satus siempre en false
-        type: Boolean,
-        default: false
-    }
-
+   
+    username: String,
+    dir_ip: String,
+    answers: String,
+    course: String,
+    session: String,
+    date: String,
+    unit: String,
+    name: String,
+    section: String,
+    subsection: String,
+    time: String,
+    page: String
 });
-module.exports = mongoose.model('tasks', TaskSchema); //aqui exporto el esquema a un metodo de moongose llamado model para que tome ese esquema y utilizarlo para guardar datos en una colección de objtos llamada task 
+module.exports = mongoose.model('cursosmpoc', TaskSchema); //aqui exporto el esquema a un metodo de moongose llamado model para que tome ese esquema y utilizarlo para guardar datos en una colección de objtos llamada task 

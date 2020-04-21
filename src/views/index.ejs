@@ -1,92 +1,129 @@
 <%- include('partials/_header.ejs') %>
 
-
-	<main id="fullpage">
-			
-		<header class="section header">
-				
-		 	<div class="container">
-			 	<div class="row">
-					 <!--form-->
-					 <div class="col-md-5">
-						<div class="card">
-							<div class="card-body">
-								<form action="/add" method="POST">
-									<div class="form-group">
-										<input type="text" name="title" id="" placeholder="Nombre de tu tarea" class="form-control">
-									</div>
-									<div class="form-group">
-											<textarea name="description" id="" cols="80" class='form-control' placeholder="inserte la descripción"></textarea>
-									</div>
-									<button type="submit" class="btn btn-primary btn-block">
-										Agendar actividad
-									</button>
-								</form>
-							</div>
-						</div>
-					 </div>
-					 <!--lista-->
-					 <div class="col-md-7">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<th>N°</th>
-								<th>Titulo</th>
-								<th>Descripción</th>
-								<th>Opciones</th>
-							</thead>
-							<tbody><!--de aqui hacia abajo se recorre el objeto tasks que trae toda la info de la base de datos para mostrarlo-->
-								<% for(var i=0; i<tasks.length; i++) { %>
-										<tr>
-												<td><%= i + 1%></td><!--genera un numero de ingreso de acuerdo a la posicion en la que esta en el array ejemplo la posicion o +1 es la primera ingresada-->
-												<td><strong><%= tasks[i].title %></strong></td><!--asi se trae la info dependiendo del nombre definido en el schema-->
-												<td><%= tasks[i].description %></td>
-												<td>
-												  <a
-													class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
-													href="/turn/<%= tasks[i]._id %>">Done</a><!--condicional donde segun el estado se cambia de color el boton-->
-												  <a href="/delete/<%= tasks[i]._id %>"
-													class="btn btn-danger">
-													Delete
-												  </a>
-												  <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">
-													Edit
-												  </a>
-												</td>
-											  </tr>
-								<%}%>
-							</tbody>
-						</table>
-					 </div>
-				 </div>
-		 	</div>
-		</header>
-		<!-- <section class="section Productos">
-			<div class="contenedor-titulo">
-				<h1 class="titulo"><span class="texto-verde">
-						Productos
-					</span></h1>
+<div class="container">
+	<p></p>
+	<p></p>
+	<p></p>
+</div>
+	
+		
+<div class="container">
+		<div class="card-deck mb-3 text-center">
+		  <div class="card mb-4 box-shadow">
+			<div class="card-header">
+			  <h4 class="my-0 font-weight-normal">Unidad Tematica I</h4>
 			</div>
-
-			<video loop muted data-autoplay class="bg-video">
-				<source src="media/Reusa.mp4" type="video/mp4">
-			</video>
-		</section> -->
-		<section class="section login">	
-			login
-      
-			</section>
-	<section class="section login">
-			
-        login2
-	</section>
-	<footer class="section footpage">
-			<h2 class="texto-blanco">SIGUENOS EN REDES SOCIALES</h2>
-			<p class="redes-sociales">
-				<a href="" class="facebook"><i class="fab fa-facebook-square"></i></a>
-				<a href="" class="instagram"><i class="fab fa-instagram"></i></a>
-				<a href="" class="twitter"><i class="fab fa-twitter-square"></i></a>
-			</p>
-	</footer>
-	</main>
+			<div class="card-body">
+			  <h1 class="card-title pricing-card-title"><small class="text-muted"><a href="/package-lock.json">supletorio</a></small></h1>
+			  <ul class="list-unstyled mt-3 mb-4">
+				
+			  </ul>
+			  <a href="/pudrete" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+			</div>
+		  </div>
+		  <div class="card mb-4 box-shadow">
+			<div class="card-header">
+			  <h4 class="my-0 font-weight-normal">Modulo 1 Unidad Temática 2</h4>
+			</div>
+			<div class="card-body">
+					<h1 class="card-title pricing-card-title"><small class="text-muted"><a href="/package-lock.json">supletorio</a></small></h1>
+					<ul class="list-unstyled mt-3 mb-4">
+					  
+					</ul>
+					<a href="/pudrete" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+			</div>
+		  </div>
+		  <div class="card mb-4 box-shadow">
+			<div class="card-header">
+			  <h4 class="my-0 font-weight-normal">Módulo 2 Unidad Temática 2</h4>
+			</div>
+			<div class="card-body">
+					<h1 class="card-title pricing-card-title"><small class="text-muted"><a href="/seccion/a1738791ea634978b046a644f2a4e02a">supletorio</a></small></h1>
+					<ul class="list-unstyled mt-3 mb-4">
+					  
+					</ul>
+					<a href="/pudrete" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+			</div>
+		  </div>
+		</div>
+		<div class="card-deck mb-3 text-center">
+				<div class="card mb-4 box-shadow">
+				  <div class="card-header">
+					<h4 class="my-0 font-weight-normal">Módulo 3 Unidad Temática 2</h4>
+				  </div>
+				  <div class="card-body">
+						<h1 class="card-title pricing-card-title"><small class="text-muted"><a href="/package-lock.json">supletorio</a></small></h1>
+						<ul class="list-unstyled mt-3 mb-4">
+						  
+						</ul>
+						<a href="/seccion/bdf831fafb714e45a22eec3b4a4b23d9" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+				  </div>
+				</div>
+				<div class="card mb-4 box-shadow">
+				  <div class="card-header">
+					<h4 class="my-0 font-weight-normal">Módulo 4 Unidad Temática 2</h4>
+				  </div>
+				  <div class="card-body">
+						<h1 class="card-title pricing-card-title"><small class="text-muted"><a href="/package-lock.json">supletorio</a></small></h1>
+						<ul class="list-unstyled mt-3 mb-4">
+						  
+						</ul>
+						<a href="/pudrete" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+				  </div>
+				</div>
+				<div class="card mb-4 box-shadow">
+				  <div class="card-header">
+					<h4 class="my-0 font-weight-normal">Examen final y Habilitación</h4>
+				  </div>
+				  <div class="card-body">
+						<h1 class="card-title pricing-card-title"><small class="text-muted"><a href="/package-lock.json">supletorio</a></small></h1>
+						<ul class="list-unstyled mt-3 mb-4">
+						  
+						</ul>
+						<a href="/pudrete" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+				  </div>
+				</div>
+				
+		</div>
+  
+		<footer class="pt-4 my-md-5 pt-md-5 border-top">
+		  <div class="row">
+			<div class="col-12 col-md">
+			  <img class="mb-2" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+			  <small class="d-block mb-3 text-muted">© 2017-2018</small>
+			</div>
+			<div class="col-6 col-md">
+			  <h5>Features</h5>
+			  <ul class="list-unstyled text-small">
+				<li><a class="text-muted" href="#">Cool stuff</a></li>
+				<li><a class="text-muted" href="#">Random feature</a></li>
+				<li><a class="text-muted" href="#">Team feature</a></li>
+				<li><a class="text-muted" href="#">Stuff for developers</a></li>
+				<li><a class="text-muted" href="#">Another one</a></li>
+				<li><a class="text-muted" href="#">Last time</a></li>
+			  </ul>
+			</div>
+			<div class="col-6 col-md">
+			  <h5>Resources</h5>
+			  <ul class="list-unstyled text-small">
+				<li><a class="text-muted" href="#">Resource</a></li>
+				<li><a class="text-muted" href="#">Resource name</a></li>
+				<li><a class="text-muted" href="#">Another resource</a></li>
+				<li><a class="text-muted" href="#">Final resource</a></li>
+			  </ul>
+			</div>
+			<div class="col-6 col-md">
+			  <h5>About</h5>
+			  <ul class="list-unstyled text-small">
+				<li><a class="text-muted" href="#">Team</a></li>
+				<li><a class="text-muted" href="#">Locations</a></li>
+				<li><a class="text-muted" href="#">Privacy</a></li>
+				<li><a class="text-muted" href="#">Terms</a></li>
+			  </ul>
+			</div>
+		  </div>
+		</footer>
+	  </div>
+				 
 
     <%- include('partials/_footer.ejs') %>
