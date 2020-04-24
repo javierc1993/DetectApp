@@ -40,7 +40,23 @@ router.get('/seccion/:seccion', async (req,res)=>{
   });
 }
 );
-
+//coincidencia botones
+router.get('/coincidencia/:subseccion', async (req,res)=>{
+const{subseccion}=req.params;
+const tasks = await Task.find({"name":"problem_graded","subsection":subseccion});
+let arreglo_completo= [];
+let consulta=tasks;
+for(i=0;i<tasks.length;i++){
+  prueba = tasks[i].answers.split('&');
+ 
+  
+    arreglo_completo.push(prueba);
+  
+}
+res.render('informe_coincidencia',{
+ tasks,arreglo_completo,consulta
+});
+});
 
 //ip's botones
 router.get('/subseccion/:subseccion', async (req,res)=>{
@@ -49,7 +65,6 @@ router.get('/subseccion/:subseccion', async (req,res)=>{
   let input_check = "";
   let ip= [];
   let respuesta=[];
-  let tamaño = tasks.length;
   for(var i=0; i<tasks.length;i++){
      obtener=tasks[i].dir_ip;
      ips=ip.push(obtener);

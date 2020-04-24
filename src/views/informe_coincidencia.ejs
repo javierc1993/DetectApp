@@ -8,7 +8,79 @@
 		 	<div class="container-fluid">
 			 	<div class="row">
 					 <div class="col-md-12">
+							<% for(var i=0; i<tasks.length; i++) { %>
+									<%function validacion(){%>
+										<%a=i+1%>
+										<%coincidencias=[];%>
+										<%arreglo_completo[-1]=[0,0,0,0,0,0,0,0,0,0];%>
+										<%arrayPredefinido = arreglo_completo[i];%>
+										<% for (var j=0;j<tasks.length;j++) {%>
+												<%arrayUsuario = arreglo_completo[j];%>
+												<%var contCoincidenciaValor = 0;%>
+												<%var contCoincidenciaOrden = 0;%>
+												<% arrayPredefinido.forEach(function(elementoPredefinido, i) {%>
+													<% arrayUsuario.forEach(function(elementoUsuario, j) {%>
+														<%if (elementoPredefinido == elementoUsuario) {%>
+															<%contCoincidenciaValor++;%>
+															<%if (i == j) {%>
+																<%contCoincidenciaOrden++;%>
+																<%}%>
+																<% } %>
+																<% });  %>            
+																<% });%>
+																<%console.log("La cantidad de repeticiones de  "+ i + "  con " + j + " en el mismo orden es: " +   contCoincidenciaOrden);%>
+																<%mensaje="La cantidad de repeticiones de  "+ i + "  con " + j + " en el mismo orden es: " +   contCoincidenciaOrden;%>
+										<table class="table table-bordered table-hover">
+											<thead>
+
+											</thead>
+										<tbody>
+													
+														<tr>
+														<td><%=mensaje%></td>
+														</tr>
+													
+										</tbody>
+										</table>
+										
+															
+																
+															
+																
+											<%}%>
+										
+									<%}%>
+														<%validacion();%>
+														
+							<%}%>
+									
+						<table class="table table-bordered table-hover">
 							
+								<thead>
+									<th></th>
+										<% for(m=0;m<tasks.length;m++) {%>
+												<th> <%=m%></th>
+												<%}%>
+								</thead>	
+
+							<tbody>
+								
+										<% for(m=0;m<tasks.length;m++) {%>
+												<tr>	
+											<th scope="row"> <%=m%></th>
+											<% for(k=0;k<tasks.length;k++) {%>
+											<td>
+													<%=k%>
+											</td>
+											<%}%>
+										</tr>
+										
+												<%}%>
+								
+							</tbody>
+							
+
+						</table>
 							
 						<table class="table table-bordered table-hover">
 							<thead>
