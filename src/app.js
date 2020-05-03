@@ -6,7 +6,7 @@ const mongoose = require('mongoose');//importa el módulo mongoose
 
 
 //conexión a la base de datos
-mongoose.connect('mongodb://localhost/estrategias_evaluativas')//conectar desde el modulo mongoose con mongo DB
+mongoose.connect('mongodb://localhost/EstrategiasEvaluativas2')//conectar desde el modulo mongoose con mongo DB
  .then(db => console.log('conexión exitosa')) //mensajes de conexión (promesa de conexión)
  .catch(err => console.log(err));
 
