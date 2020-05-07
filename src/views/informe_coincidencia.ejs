@@ -8,16 +8,38 @@
 		 	<div class="container-fluid">
 			 	<div class="row">
 					 <div class="col-md-12">
+						 
+							<table class="table table-bordered table-hover">
+									<thead>
+											
+										<th>Estudiante #</th>
+										<th>Estudiante #</th>
+										<th>Coinciden en: </th>
+										<th>Hora de Entrega primer estudiante</th>
+										<th>Hora de Entrega segundo estudiante</th>
+										<th>Fecha: </th>
+										<th>Dirección IP primer estudiante</th>
+										<th>Dirección IP segundo estudiante</th>
+										<th>Enlace: </th>
+										
+										
+										
+									</thead>
+								<tbody>
+											
+										<%let arreglo_coincidencias=[];%>				
 							<% for(var i=0; i<tasks.length; i++) { %>
 									<%function validacion(){%>
+							
 										<%a=i+1%>
 										<%coincidencias=[];%>
-										<%arreglo_completo[-1]=[0,0,0,0,0,0,0,0,0,0];%>
 										<%arrayPredefinido = arreglo_completo[i];%>
 										<% for (var j=0;j<tasks.length;j++) {%>
+												<%b=j+1%>
 												<%arrayUsuario = arreglo_completo[j];%>
 												<%var contCoincidenciaValor = 0;%>
 												<%var contCoincidenciaOrden = 0;%>
+												<%var limite= arreglo_completo[1].length * 0.9 ;%>
 												<% arrayPredefinido.forEach(function(elementoPredefinido, i) {%>
 													<% arrayUsuario.forEach(function(elementoUsuario, j) {%>
 														<%if (elementoPredefinido == elementoUsuario) {%>
@@ -28,33 +50,35 @@
 																<% } %>
 																<% });  %>            
 																<% });%>
-																<%console.log("La cantidad de repeticiones de  "+ i + "  con " + j + " en el mismo orden es: " +   contCoincidenciaOrden);%>
-																<%mensaje="La cantidad de repeticiones de  "+ i + "  con " + j + " en el mismo orden es: " +   contCoincidenciaOrden;%>
-										<table class="table table-bordered table-hover">
-											<thead>
-
-											</thead>
-										<tbody>
-													
+															<%mensaje= contCoincidenciaOrden;%>
+															<%arreglo_coincidencias.push(contCoincidenciaOrden);%>
+														    <%if ( a!=b && contCoincidenciaOrden>limite ) {%>
 														<tr>
-														<td><%=mensaje%></td>
-														</tr>
+														<td><%=consulta[i].username%></td>
+														<td><%=consulta[j].username%></td>
+														<td><%=mensaje%> respuestas</td>
+														<td><%=consulta[i].time%></td>
+														<td><%=consulta[j].time%></td>
+														<td><%=consulta[i].date%></td>
+														<td><%=consulta[i].dir_ip%></td>
+														<td><%=consulta[j].dir_ip%></td>
+														<td><%=consulta[i].page%></td>
+														<%}%>
+														
 													
-										</tbody>
-										</table>
 										
-															
-																
-															
-																
+											
 											<%}%>
 										
 									<%}%>
 														<%validacion();%>
-														
+													</tr>					
 							<%}%>
-									
-						<table class="table table-bordered table-hover">
+						</tbody>
+					</table>
+						<%=arreglo_coincidencias[13340]%>
+							<%=arreglo_coincidencias.length%>	
+			<!--	<table class="table table-bordered table-hover">
 							
 								<thead>
 									<th></th>
@@ -81,7 +105,7 @@
 							
 
 						</table>
-							
+							-->
 						<table class="table table-bordered table-hover">
 							<thead>
 								<th>N°</th>

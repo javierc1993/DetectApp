@@ -43,7 +43,7 @@ router.get('/cursos/:cursos', async (req,res)=>{
         /*** Se busca en temporal el elemento, y en repetido para * ver si esta ingresado al array. indexOf returna* -1 si el elemento no se encuetra**/
       /*  if(Fechatemporal.indexOf(value)!=-1 && Fecharepetidos.indexOf(value)==-1)      Fecharepetidos.push(value);
         });  */
-     console.log(repetidos);  
+     /*console.log(repetidos); */ 
    /*  console.log(Fecharepetidos); */
   
   res.render('segunda',{
