@@ -1,20 +1,36 @@
 <%- include('partials/_header.ejs') %>
+<div class="container">
 
-				<div class="card-deck mb-3 text-center">
-					
+		<div class="card-deck mb-3 text-center">
+			<div class="card mb-6 box-shadow">
+				<h4>
+						Hay <%=repetidos.length%> Grupos de trabajo
+				</h4>
+			</div>
+		</div>
+				
+					<% if(repetidos.length==0){%>
+						<div class="card mb-4 box-shadow">
+						<h4>No hay direcciones ip coincidentes</h4>
+					    </div>
+						<%}%>
+						<div class="row justify-content-md-center">
 						<% for(var j=0; j<repetidos.length; j++) { %>
-								<div class="card mb-4 box-shadow">
+							
+								<div class="col align-self-start">
 										<% let dir_ip  %>
 										<% dir_ip = repetidos[j]%>
 								<a href="/ipseccion/<%=dir_ip%>/<%=subseccion%>"
-								class="btn btn-danger">
-								<%=repetidos[j]%>
+									class="btn btn-info">
+								<p> Direccion IP</p>
+								<p><%=repetidos[j]%></p> 
 								</a>
 								</div>
 								<%}%>
-				</div>
-		 	
+							</div>
+					
 				
+			</div>			
 		 	
     <%- include('partials/_footer.ejs') %>
     

@@ -8,8 +8,41 @@
 		 	<div class="container-fluid">
 			 	<div class="row">
 					 <div class="col-md-12">
-						 
+						
+							
 							<table class="table table-bordered table-hover">
+									<thead>
+											
+										<th>Estudiante #</th>
+										<th>Estudiante #</th>
+										<th>Coinciden en: </th>
+										<th>Hora de Entrega primer estudiante</th>
+										<th>Hora de Entrega segundo estudiante</th>
+										<th>Fecha: </th>
+										<th>Dirección IP primer estudiante</th>
+										<th>Dirección IP segundo estudiante</th>	
+									</thead>
+								<tbody>
+											
+															
+							<% for(var i=0; i<obj.datos.length; i++) { %>
+									
+														<tr>
+														
+														<td><%=obj.datos[i].estudiante1%></td>
+														<td><%=obj.datos[i].estudiante2%></td>
+														<td><%=obj.datos[i].coincidencias%></td>
+														<td><%=obj.datos[i].horaestudiante1%></td>
+														<td><%=obj.datos[i].horaestudiante2%></td>
+														<td><%=obj.datos[i].fecha%></td>
+														<td><%=obj.datos[i].dir_ip1%></td>
+														<td><%=obj.datos[i].dir_ip2%></td>
+													</tr>					
+							<%}%>
+						</tbody>
+					</table>
+						 
+						<!--	<table class="table table-bordered table-hover">
 									<thead>
 											
 										<th>Estudiante #</th>
@@ -30,10 +63,9 @@
 										<%let arreglo_coincidencias=[];%>				
 							<% for(var i=0; i<tasks.length; i++) { %>
 									<%function validacion(){%>
-							
-										<%a=i+1%>
-										<%coincidencias=[];%>
-										<%arrayPredefinido = arreglo_completo[i];%>
+											<%a=i+1%>
+											<%coincidencias=[];%>
+											<%arrayPredefinido = arreglo_completo[i];%>
 										<% for (var j=0;j<tasks.length;j++) {%>
 												<%b=j+1%>
 												<%arrayUsuario = arreglo_completo[j];%>
@@ -64,10 +96,6 @@
 														<td><%=consulta[j].dir_ip%></td>
 														<td><%=consulta[i].page%></td>
 														<%}%>
-														
-													
-										
-											
 											<%}%>
 										
 									<%}%>
@@ -75,9 +103,8 @@
 													</tr>					
 							<%}%>
 						</tbody>
-					</table>
-						<%=arreglo_coincidencias[13340]%>
-							<%=arreglo_coincidencias.length%>	
+					</table>-->
+							
 			<!--	<table class="table table-bordered table-hover">
 							
 								<thead>
@@ -129,14 +156,9 @@
 							</thead>
 							<tbody><!--de aqui hacia abajo se recorre el objeto consulta que trae toda la info de la base de datos para mostrarlo-->
 								  <% let prueba , pruebas; %>
-								 
-								  
 								  <% for(var i=0; i<consulta.length; i++) { %>
 										<% let prueba , pruebas,answer_check; %>
 										<% prueba = consulta[i].answers.split('&');%>
-										
-										
-										
 										<tr>
 												<td><%= i + 1%></td><!--genera un numero de ingreso de acuerdo a la posicion en la que esta en el array ejemplo la posicion o +1 es la primera ingresada-->
 												<td><%= consulta[i].username %></td><!--asi se trae la info dependiendo del nombre definido en el schema-->
@@ -154,6 +176,7 @@
 												<td><%= consulta[i].subsection %></td>
 												<td><%= consulta[i].time %></td>
 												<td><%= consulta[i].page %></td>
+												
 											<!--	<td>
 												  <a
 													class="<%= consulta[i].status ? 'btn btn-success' : 'btn btn-dark'%>"

@@ -68,15 +68,61 @@ const{subseccion}=req.params;
 const tasks = await Task.find({"name":"problem_check","subsection":subseccion});
 let arreglo_completo= [];
 let consulta=tasks;
+let arreglo_coincidencias1={'datos':[]};	
+var objeto={};
 for(i=0;i<tasks.length;i++){
   prueba = tasks[i].answers.split('&');
- 
-  
-    arreglo_completo.push(prueba);
-  
-}
+  arreglo_completo.push(prueba);
+}	
+for(var i=0; i<tasks.length; i++) { 
+function validacion(){
+    a=i+1
+    coincidencias=[];
+    arrayPredefinido = arreglo_completo[i];
+     for (var j=0;j<tasks.length;j++) {
+          b=j+1
+          arrayUsuario = arreglo_completo[j];
+          var contCoincidenciaValor = 0;
+          var contCoincidenciaOrden = 0;
+          var limite= arreglo_completo[1].length * 0.9 ;
+           arrayPredefinido.forEach(function(elementoPredefinido, i) {
+             arrayUsuario.forEach(function(elementoUsuario, j) {
+              if (elementoPredefinido == elementoUsuario) {
+                contCoincidenciaValor++;
+                if (i == j) {
+                  contCoincidenciaOrden++;
+                  }
+                   } 
+                   });              
+                   });
+                mensaje= contCoincidenciaOrden;
+                
+                if ( a!=b && contCoincidenciaOrden>limite ){
+              arreglo_coincidencias1.datos.push({
+                  "estudiante1" : consulta[i].username,
+                  "estudiante2": consulta[j].username,
+									"coincidencias":contCoincidenciaOrden,
+									"horaestudiante1":consulta[i].time,
+									"horaestudiante2":consulta[j].time,
+									"fecha":consulta[i].date,
+									"dir_ip1":consulta[i].dir_ip,
+									"dir_ip2":consulta[j].dir_ip,
+									"link":consulta[i].page
+                });
+                
+              }
+               
+                        }
+      
+    }
+              validacion();
+                    }
+                    json = JSON.stringify(arreglo_coincidencias1);
+                    var obj = JSON.parse(json);           
+
+
 res.render('informe_coincidencia',{
- tasks,arreglo_completo,consulta
+ tasks,arreglo_completo,consulta,arreglo_coincidencias1,json,obj
 });
 });
 
@@ -99,6 +145,7 @@ temporal = Object.assign([],ip); //Copiado de elemento
 temporal.splice(index,1); //Se elimina el elemnto q se compara
 /*** Se busca en temporal el elemento, y en repetido para * ver si esta ingresado al array. indexOf returna* -1 si el elemento no se encuetra**/
 if(temporal.indexOf(value)!=-1 && repetidos.indexOf(value)==-1)      repetidos.push(value);
+
 });
       res.render('ips',{
         tasks,respuesta,input_check,consulta,repetidos,subseccion //paso un arreglo tareas a la vista 
@@ -108,18 +155,159 @@ if(temporal.indexOf(value)!=-1 && repetidos.indexOf(value)==-1)      repetidos.p
 router.get('/ipseccion/:dir_ip/:op', async(req,res) =>{
 const {dir_ip} = req.params;
 const {op}=req.params;
-consulta = await Task.find({"dir_ip": dir_ip,"name":"problem_check","subsection":op});
+tasks = await Task.find({"dir_ip": dir_ip,"name":"problem_check","subsection":op});
+consulta=tasks;
+let arreglo_completo= [];
+let arreglo_completo2= [];
+let arreglo_completo3= [];
+
+let arreglo_coincidencias1={'datos':[]};
+for(i=0;i<tasks.length;i++){
+  prueba = tasks[i].answers.split('&');
+  arreglo_completo.push(prueba);
+  
+}
+;
+if(arreglo_completo[0].length>arreglo_completo[1].length){
+  let tamaño= arreglo_completo[1].length;
+
+for(var m=0;m<arreglo_completo.length;m++){
+  let arreglo_completo2=[];
+  for(var k=0; k<tamaño; k++) {
+    answer_check=arreglo_completo[m][k].split('=');
+     arreglo_completo2.push(answer_check[1]); 
+     
+      }
+      arreglo_completo3.push(arreglo_completo2);
+    }
+   
+for(var i=0; i<tasks.length; i++) { 
+ 
+  function validacion(){
+      a=i+1
+      coincidencias=[];
+      arrayPredefinido = arreglo_completo3[i];
+     
+       for (var j=0;j<tasks.length;j++) {
+            b=j+1
+            arrayUsuario = arreglo_completo3[j];
+            var contCoincidenciaValor = 0;
+            var contCoincidenciaOrden = 0;
+            var limite= arreglo_completo[1].length * 0.2 ;
+             arrayPredefinido.forEach(function(elementoPredefinido, i) {
+         
+               arrayUsuario.forEach(function(elementoUsuario, j) {
+               
+                if (elementoPredefinido == elementoUsuario) {
+                  contCoincidenciaValor++;
+                  if (i == j) {
+                    
+                    contCoincidenciaOrden++;
+                    }
+                     } 
+                     });              
+                     });
+                  mensaje= contCoincidenciaOrden;
+                  
+                  if ( a!=b ){
+                arreglo_coincidencias1.datos.push({
+                    "estudiante1" : consulta[i].username,
+                    "estudiante2": consulta[j].username,
+                    "coincidencias":contCoincidenciaOrden,
+                    "horaestudiante1":consulta[i].time,
+                    "horaestudiante2":consulta[j].time,
+                    "fecha":consulta[i].date,
+                    "dir_ip1":consulta[i].dir_ip,
+                    "dir_ip2":consulta[j].dir_ip,
+                    "link":consulta[i].page
+                  });
+                  
+                }
+                 
+                          }
+        
+      }
+                validacion();
+                      }
+                      json = JSON.stringify(arreglo_coincidencias1);
+                      var obj = JSON.parse(json); 
+}
+else{
+  let tamaño= arreglo_completo[0].length;
+for(var m=0;m<arreglo_completo.length;m++){
+  let arreglo_completo2=[];
+  for(var k=0; k<tamaño; k++) {
+    answer_check=arreglo_completo[m][k].split('=');
+     arreglo_completo2.push(answer_check[1]); 
+     
+      }
+      arreglo_completo3.push(arreglo_completo2);
+    }
+   
+for(var i=0; i<tasks.length; i++) { 
+ 
+  function validacion(){
+      a=i+1
+      coincidencias=[];
+      arrayPredefinido = arreglo_completo3[i];
+     
+       for (var j=0;j<tasks.length;j++) {
+            b=j+1
+            arrayUsuario = arreglo_completo3[j];
+            var contCoincidenciaValor = 0;
+            var contCoincidenciaOrden = 0;
+            var limite= arreglo_completo[1].length * 0.2 ;
+             arrayPredefinido.forEach(function(elementoPredefinido, i) {
+         
+               arrayUsuario.forEach(function(elementoUsuario, j) {
+                
+                if (elementoPredefinido == elementoUsuario) {
+                  contCoincidenciaValor++;
+                  if (i == j) {
+                    
+                    contCoincidenciaOrden++;
+                    }
+                     } 
+                     });              
+                     });
+                  mensaje= contCoincidenciaOrden;
+                  
+                  if ( a!=b ){
+                arreglo_coincidencias1.datos.push({
+                    "estudiante1" : consulta[i].username,
+                    "estudiante2": consulta[j].username,
+                    "coincidencias":contCoincidenciaOrden,
+                    "horaestudiante1":consulta[i].time,
+                    "horaestudiante2":consulta[j].time,
+                    "fecha":consulta[i].date,
+                    "dir_ip1":consulta[i].dir_ip,
+                    "dir_ip2":consulta[j].dir_ip,
+                    "link":consulta[i].page
+                  });
+                  
+                }
+                 
+                          }
+        
+      }
+                validacion();
+                      }
+                      json = JSON.stringify(arreglo_coincidencias1);
+                      var obj = JSON.parse(json); 
+}
+
 res.render('informe_ip',{
-  consulta //paso un arreglo tareas a la vista 
+  consulta,obj//paso un arreglo tareas a la vista 
 });
 });
-router.get('/delete/:id', async (req, res) => {//creacion de la ruta para que borre de la base de datos una tarea identificada por el _id unico en mongodb enviado desde el boton delete en index.ejs
+//hasta aqui va la tesis //
+/*router.get('/delete/:id', async (req, res) => {//creacion de la ruta para que borre de la base de datos una tarea identificada por el _id unico en mongodb enviado desde el boton delete en index.ejs
   const { id }=req.params; //tomamos el parametro id que enviamos desde el botón delete en index.ejs
  await Task.remove({_id: id});//eliminar esa tarea (todas son sentencias de moongose)
  res.redirect('/');
 });
-//hasta aqui va la tesis //
-/*
+
+
 router.post('/add', async (req, res) => {//creacion de la ruta ara que el formulario envie a esta misma los datos a almacenar en la base de datos
     
     const task = new Task(req.body);//aqui se crea el objeto que puedo almacenar en la base de datos
