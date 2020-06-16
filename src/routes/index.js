@@ -1,14 +1,14 @@
 const express = require('express');
 const router  = express.Router();//metodo de express que se encarga de devolver un objeto
 const Task = require('../models/task');//constante donde traigo el eschema definido en /models/task osea los campos de la tabla analog a mysql
-
+const passport = require('passport');
 
 //routes//
 
 //inicio//
-router.get('/', async (req, res) => {//cuando pidan al servidor con un get yo respondo con res
+router.get('/cursos', async (req, res) => {//cuando pidan al servidor con un get yo respondo con res
   const tasks = await Task.find({"name":"problem_graded","course":"Unicauca+LaTEX_Fish+2019-II"});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar   
-  res.render('index',{
+  res.render('courses',{
     tasks//paso un arreglo tareas a la vista 
   });//desde aqui se envia la pagina respuesta cuando se tiene una petición get
 }
@@ -300,6 +300,31 @@ res.render('informe_ip',{
   consulta,obj//paso un arreglo tareas a la vista 
 });
 });
+
+
+//passport//
+router.get('/', (req, res, next)=>{
+  res.render('signin',{
+    //paso un arreglo tareas a la vista 
+  });
+});
+
+router.get('/signup', (req, res, next)=>{
+res.render('signup',{});
+});
+
+router.post('/signup', passport.authenticate('local-signup',{
+  successRedirect:'/cursos',
+  failureRedirect:'/',
+  passReqToCallback: true
+}));
+
+
+router.post('/',passport.authenticate('local-signin',{
+  successRedirect:'/cursos',
+  failureRedirect:'/',
+  passReqToCallback: true
+}) );
 //hasta aqui va la tesis //
 /*router.get('/delete/:id', async (req, res) => {//creacion de la ruta para que borre de la base de datos una tarea identificada por el _id unico en mongodb enviado desde el boton delete en index.ejs
   const { id }=req.params; //tomamos el parametro id que enviamos desde el botón delete en index.ejs

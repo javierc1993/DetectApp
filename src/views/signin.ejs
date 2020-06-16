@@ -1,0 +1,16 @@
+<% if (signinMessage){ %>
+    <div><%= signinMessage%></div>
+<%}%>
+<% if (failpassword){ %>
+    <div><%= failpassword%></div>
+<%}%>
+
+
+<form action="/" method="POST">
+<input type="email" name="email" id="" placeholder="Inserte su correo">
+<input type="password" name="password" id="">
+<button type="submit">
+    Inicia Sesión
+</button>
+<a href="/signup" type="button" class="btn btn-lg btn-block btn-outline-primary">ó Registrate</a>
+</form>
