@@ -5,8 +5,47 @@ const passport = require('passport');
 
 //routes//
 
-//inicio//
-router.get('/cursos', async (req, res) => {//cuando pidan al servidor con un get yo respondo con res
+//passport manejo de sesiones//
+
+//pagina inicial//
+router.get('/', (req, res, next)=>{
+  res.render('signin',{
+    //paso un arreglo tareas a la vista 
+  });
+});
+//autenticación inicio de sesión/
+router.post('/',passport.authenticate('local-signin',{
+  successRedirect:'/cursos',
+  failureRedirect:'/',
+  passReqToCallback: true
+}) );
+
+//registro de nuevo usuario//
+router.get('/signup', (req, res, next)=>{
+res.render('signup',{});
+});
+//guardado de base de datos de nuevo usuario//
+router.post('/signup', passport.authenticate('local-signup',{
+  successRedirect:'/cursos',
+  failureRedirect:'/',
+  passReqToCallback: true
+}));
+//cierre de sesión
+router.get('/logout',(req,res,next)=>{
+  req.logout();
+  res.redirect('/');
+});
+//autentificación y manejo de sessión 
+function isAuthenticated(req,res,next) {
+ if(req.isAuthenticated()){
+   return next();
+ }
+ res.redirect('/');
+};
+
+
+//listado de cursos//
+router.get('/cursos', isAuthenticated, async (req, res) => {//cuando pidan al servidor con un get yo respondo con res
   const tasks = await Task.find({"name":"problem_graded","course":"Unicauca+LaTEX_Fish+2019-II"});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar   
   res.render('courses',{
     tasks//paso un arreglo tareas a la vista 
@@ -15,8 +54,8 @@ router.get('/cursos', async (req, res) => {//cuando pidan al servidor con un get
 );
 //
 
-//listado de cursos//
-router.get('/cursos/:cursos', async (req,res)=>{
+//listado de examenes//
+router.get('/cursos/:cursos',isAuthenticated, async (req,res)=>{
   const { cursos }= req.params; //tomamos el parametro id que enviamos desde el botón delete en index.ejs
   const tasks= await Task.find({"name":"problem_check","course":cursos});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar
   let subsection=[];
@@ -54,7 +93,7 @@ router.get('/cursos/:cursos', async (req,res)=>{
 //
 
 //Examenes//
-router.get('/seccion/:seccion', async (req,res)=>{
+router.get('/seccion/:seccion',isAuthenticated, async (req,res)=>{
   const { seccion }= req.params; //tomamos el parametro id que enviamos desde el botón delete en index.ejs
   const tasks= await Task.find({"name":"problem_check","subsection":seccion});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar
   res.render('opciones',{
@@ -63,7 +102,7 @@ router.get('/seccion/:seccion', async (req,res)=>{
 }
 );
 //coincidencia botones
-router.get('/coincidencia/:subseccion', async (req,res)=>{
+router.get('/coincidencia/:subseccion',isAuthenticated, async (req,res)=>{
 const{subseccion}=req.params;
 const tasks = await Task.find({"name":"problem_check","subsection":subseccion});
 let arreglo_completo= [];
@@ -127,7 +166,7 @@ res.render('informe_coincidencia',{
 });
 
 //ip's botones
-router.get('/subseccion/:subseccion', async (req,res)=>{
+router.get('/subseccion/:subseccion',isAuthenticated, async (req,res)=>{
   const { subseccion }=req.params;
   const tasks= await Task.find({"name":"problem_check","subsection":subseccion});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar
   let input_check = "";
@@ -152,7 +191,7 @@ if(temporal.indexOf(value)!=-1 && repetidos.indexOf(value)==-1)      repetidos.p
       }); 
 });
 //muestra los alumnos con x ip identica
-router.get('/ipseccion/:dir_ip/:op', async(req,res) =>{
+router.get('/ipseccion/:dir_ip/:op',isAuthenticated, async(req,res) =>{
 const {dir_ip} = req.params;
 const {op}=req.params;
 tasks = await Task.find({"dir_ip": dir_ip,"name":"problem_check","subsection":op});
@@ -302,29 +341,7 @@ res.render('informe_ip',{
 });
 
 
-//passport//
-router.get('/', (req, res, next)=>{
-  res.render('signin',{
-    //paso un arreglo tareas a la vista 
-  });
-});
 
-router.get('/signup', (req, res, next)=>{
-res.render('signup',{});
-});
-
-router.post('/signup', passport.authenticate('local-signup',{
-  successRedirect:'/cursos',
-  failureRedirect:'/',
-  passReqToCallback: true
-}));
-
-
-router.post('/',passport.authenticate('local-signin',{
-  successRedirect:'/cursos',
-  failureRedirect:'/',
-  passReqToCallback: true
-}) );
 //hasta aqui va la tesis //
 /*router.get('/delete/:id', async (req, res) => {//creacion de la ruta para que borre de la base de datos una tarea identificada por el _id unico en mongodb enviado desde el boton delete en index.ejs
   const { id }=req.params; //tomamos el parametro id que enviamos desde el botón delete en index.ejs

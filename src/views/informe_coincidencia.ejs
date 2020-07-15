@@ -133,96 +133,92 @@
 
 						</table>
 							-->
-						<table class="table table-bordered table-hover">
-							<thead>
-								<th>N°</th>
-								<th>Estudiante</th>
-								<th>Dir IP</th>
-								<%let respuestas = consulta[0].answers.split('&');%>
-								<% for(var i=0; i<respuestas.length; i++) { %>
-										<th>Respuesta<%= i+1%></th>
-										<%}%>
-
-									
-								<th>Curso</th>
-								<th>Cod Sesión</th>
-								<th>Fecha</th>
-								<th>Unidad</th>
-								<th>Actividad</th>
-								<th>Sección</th>
-								<th>Subsección</th>
-								<th>Hora</th>
-								<th>Página</th>
-							</thead>
-							<tbody><!--de aqui hacia abajo se recorre el objeto consulta que trae toda la info de la base de datos para mostrarlo-->
-								  <% let prueba , pruebas; %>
-								  <% for(var i=0; i<consulta.length; i++) { %>
-										<% let prueba , pruebas,answer_check; %>
-										<% prueba = consulta[i].answers.split('&');%>
-										<tr>
-												<td><%= i + 1%></td><!--genera un numero de ingreso de acuerdo a la posicion en la que esta en el array ejemplo la posicion o +1 es la primera ingresada-->
-												<td><%= consulta[i].username %></td><!--asi se trae la info dependiendo del nombre definido en el schema-->
-												<td><%= consulta[i].dir_ip %></td>
-												<% for(var j=0; j<prueba.length; j++) {%>
-												<% answer_check=prueba[j].split('=');%>
-												<td><%=answer_check[1]%></td>
-												<%}%> 
-												<td><%= consulta[i].course %></td>
-												<td><%= consulta[i].session %></td>
-												<td><%= consulta[i].date %></td>
-												<td><%= consulta[i].unit %></td>
-												<td><%= consulta[i].name %></td>
-												<td><%= consulta[i].section %></td>
-												<td><%= consulta[i].subsection %></td>
-												<td><%= consulta[i].time %></td>
-												<td><%= consulta[i].page %></td>
-												
-											<!--	<td>
-												  <a
-													class="<%= consulta[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
-													href="/turn/<%= consulta[i]._id %>">Done</a>condicional donde segun el estado se cambia de color el boton
-												  <a href="/delete/<%= consulta[i]._id %>"
-													class="btn btn-danger">
-													Delete
-												  </a>
-												  <a href="/edit/<%= consulta[i]._id %>" class="btn btn-info">
-													Edit
-												  </a>
-												</td>-->
-											  </tr>
-											  
-								<%}%>
-							</tbody>
-						</table>
+					
+					
+							
 					 </div>
 				 </div>
-
-				 <div class="row">
-					<div class="col-md-8">.col-md-8</div>
-					<div class="col-md-4">.col-md-4</div>
-				 </div>
-		 	</div>
+				 <div id="boton" class="boton">
+					<button id="mostrar" class="btn btn-info" type="button" onclick="document.getElementById('1405').style.display= 'block';document.getElementById('mostrar').style.display = 'none';">Mostrar Más</button>
+				</div>
+				 
+			 </div>
+			 
 		</header>
-		<!-- <section class="section Productos">
-			<div class="contenedor-titulo">
-				<h1 class="titulo"><span class="texto-verde">
-						Productos
-					</span></h1>
-			</div>
-
-			<video loop muted data-autoplay class="bg-video">
-				<source src="media/Reusa.mp4" type="video/mp4">
-			</video>
-		</section> -->
 		
-	<footer class="section footpage">
-			<h2 class="texto-blanco">SIGUENOS EN REDES SOCIALES</h2>
-			<p class="redes-sociales">
-				<a href="" class="facebook"><i class="fab fa-facebook-square"></i></a>
-				<a href="" class="instagram"><i class="fab fa-instagram"></i></a>
-				<a href="" class="twitter"><i class="fab fa-twitter-square"></i></a>
-			</p>
-	</footer>
+
+		<div id="1405" class="container-fluid"  style="display: none;">
+			<div class="row">
+				<button id="ocultar" class="btn btn-info" type="button" onclick="document.getElementById('1405').style.display= 'none';document.getElementById('mostrar').style.display = 'block';">Mostrar menos</button>
+			<div class="col-md-12">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<th>N°</th>
+						<th>Estudiante</th>
+						<th>Dir IP</th>
+						<%let respuestas = consulta[0].answers.split('&');%>
+						<% for(var i=0; i<respuestas.length; i++) { %>
+								<th>Respuesta<%= i+1%></th>
+								<%}%>
+	
+							
+						<th>Curso</th>
+						<th>Cod Sesión</th>
+						<th>Fecha</th>
+						<th>Unidad</th>
+						<th>Actividad</th>
+						<th>Sección</th>
+						<th>Subsección</th>
+						<th>Hora</th>
+						<th>Página</th>
+					</thead>
+					<tbody><!--de aqui hacia abajo se recorre el objeto consulta que trae toda la info de la base de datos para mostrarlo-->
+						  <% let prueba , pruebas; %>
+						  <% for(var i=0; i<consulta.length; i++) { %>
+								<% let prueba , pruebas,answer_check; %>
+								<% prueba = consulta[i].answers.split('&');%>
+								<tr>
+										<td><%= i + 1%></td><!--genera un numero de ingreso de acuerdo a la posicion en la que esta en el array ejemplo la posicion o +1 es la primera ingresada-->
+										<td><%= consulta[i].username %></td><!--asi se trae la info dependiendo del nombre definido en el schema-->
+										<td><%= consulta[i].dir_ip %></td>
+										<% for(var j=0; j<prueba.length; j++) {%>
+										<% answer_check=prueba[j].split('=');%>
+										<td><%=answer_check[1]%></td>
+										<%}%> 
+										<td><%= consulta[i].course %></td>
+										<td><%= consulta[i].session %></td>
+										<td><%= consulta[i].date %></td>
+										<td><%= consulta[i].unit %></td>
+										<td><%= consulta[i].name %></td>
+										<td><%= consulta[i].section %></td>
+										<td><%= consulta[i].subsection %></td>
+										<td><%= consulta[i].time %></td>
+										<td><%= consulta[i].page %></td>
+										
+									<!--	<td>
+										  <a
+											class="<%= consulta[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+											href="/turn/<%= consulta[i]._id %>">Done</a>condicional donde segun el estado se cambia de color el boton
+										  <a href="/delete/<%= consulta[i]._id %>"
+											class="btn btn-danger">
+											Delete
+										  </a>
+										  <a href="/edit/<%= consulta[i]._id %>" class="btn btn-info">
+											Edit
+										  </a>
+										</td>-->
+									  </tr>
+									  
+						<%}%>
+					</tbody>
+				</table>
+			</div>
+			</div>
+			
+			
+		</div>
+	
+		
 	</main>
 
     <%- include('partials/_footer.ejs') %>
