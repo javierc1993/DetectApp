@@ -47,7 +47,6 @@ function isAuthenticated(req,res,next) {
 //listado de cursos//
 router.get('/cursos', isAuthenticated, async (req, res) => {//cuando pidan al servidor con un get yo respondo con res
   const tasks = await Task.find({name:"problem_graded",course:"Unicauca+LaTEX_Fish+2019-II"});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar   
-  console.log(tasks)
   res.render('courses',{
     tasks//paso un arreglo tareas a la vista 
   });//desde aqui se envia la pagina respuesta cuando se tiene una petición get
@@ -58,12 +57,13 @@ router.get('/cursos', isAuthenticated, async (req, res) => {//cuando pidan al se
 //listado de examenes//
 router.get('/cursos/:cursos',isAuthenticated, async (req,res)=>{
   const { cursos }= req.params; //tomamos el parametro id que enviamos desde el botón delete en index.ejs
-  const task= await Task.find({name:"problem_check",course:"cursos"});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar
+  const task= await Task.find({"name":"problem_check","course":cursos});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar
+  console.log(cursos)
   let subsection=[];
   let fecha=[];
-  for(var i=0; i<tasks.length;i++){
-    obtener=tasks[i].subsection;
-    fechas=tasks[i].date;
+  for(var i=0; i<task.length;i++){
+    obtener=task[i].subsection;
+    fechas=task[i].date;
     dates=fecha.push(fechas);
     ips=subsection.push(obtener);
      }
@@ -75,17 +75,6 @@ router.get('/cursos/:cursos',isAuthenticated, async (req,res)=>{
      /*** Se busca en temporal el elemento, y en repetido para * ver si esta ingresado al array. indexOf returna* -1 si el elemento no se encuetra**/
      if(temporal.indexOf(value)!=-1 && repetidos.indexOf(value)==-1)      repetidos.push(value);
      });
-   /*  var Fecharepetidos = [];
-     var Fechatemporal = [];
-     fecha.forEach((value,index)=>{
-        Fechatemporal = Object.assign([],fecha); //Copiado de elemento
-        Fechatemporal.splice(index,1); //Se elimina el elemnto q se compara
-        /*** Se busca en temporal el elemento, y en repetido para * ver si esta ingresado al array. indexOf returna* -1 si el elemento no se encuetra**/
-      /*  if(Fechatemporal.indexOf(value)!=-1 && Fecharepetidos.indexOf(value)==-1)      Fecharepetidos.push(value);
-        });  */
-     /*console.log(repetidos); */ 
-   /*  console.log(Fecharepetidos); */
-  
   res.render('segunda',{
     task,cursos,repetidos //paso un arreglo tareas a la vista 
   });
