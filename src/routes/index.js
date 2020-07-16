@@ -47,6 +47,7 @@ function isAuthenticated(req,res,next) {
 //listado de cursos//
 router.get('/cursos', isAuthenticated, async (req, res) => {//cuando pidan al servidor con un get yo respondo con res
   const tasks = await Task.find({"name":"problem_graded","course":"Unicauca+LaTEX_Fish+2019-II"});// aqui se busca los datos en la base de datos antes que se cargue la vista a mostrar   
+  console.log(tasks)
   res.render('courses',{
     tasks//paso un arreglo tareas a la vista 
   });//desde aqui se envia la pagina respuesta cuando se tiene una petición get
