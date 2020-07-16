@@ -9,18 +9,11 @@ const flash= require('connect-flash');
 require('./passport/local-auth');
 
 //conexión a la base de datos
-//mongoose.connect('mongodb://localhost/EstrategiasEvaluativas2',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
-// .then(db => console.log('conexión exitosa')) //mensajes de conexión (promesa de conexión)
- //.catch(err => console.log(err));
+mongoose.connect('mongodb+srv://JavierCP:Eunicepen1*@estrategiasevaluativas2.km7om.gcp.mongodb.net/<EstrategiasEvaluativas2>?retryWrites=true&w=majority',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
+.then(db => console.log('conexión exitosa')) //mensajes de conexión (promesa de conexión)
+.catch(err => console.log(err));
 
- const MongoClient = require('mongodb').MongoClient;
- const uri = "mongodb+srv://JavierCP:Eunicepen1*@estrategiasevaluativas2.km7om.gcp.mongodb.net/EstrategiasEvaluativas2?retryWrites=true&w=majority";
- const client = new MongoClient(uri, { useNewUrlParser: true });
- client.connect(err => {
-   const collection = client.db("test").collection("devices");
-   // perform actions on the collection object
-   client.close();
- });
+
  
 //importing routes
 const IndexRoutes= require('./routes/index');//importa el objeto que contiene las rutas en routes/index.js
