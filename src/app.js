@@ -9,7 +9,7 @@ const flash= require('connect-flash');
 require('./passport/local-auth');
 
 //conexión a la base de datos
-mongoose.connect('mongodb+srv://JavierCP:Eunicepen1*@estrategiasevaluativas2.km7om.gcp.mongodb.net/EstrategiasEvaluativas2?retryWrites=true&w=majority',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
+mongoose.connect('mongodb://JavierCP:Eunicepen1*@estrategiasevaluativas2.km7om.gcp.mongodb.net/EstrategiasEvaluativas2?retryWrites=true&w=majority',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
 .then(db => console.log('conexión exitosa')) //mensajes de conexión (promesa de conexión)
  .catch(err => console.log(err));
 
