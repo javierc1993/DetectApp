@@ -38,13 +38,10 @@ app.use((req,res,next)=>{
     app.locals.failpassword = req.flash('failpassword');
     next();
 });
-app.use('/static', express.static('public'));
+//app.use('/static', express.static('public'));
 //middlewares//funcion que se ejecuta antes de que lleguen a las rutas del servidor
 app.use(morgan('dev'));//muestra las peticiones en consola antes de que lleguen al servidor//importante para ver que esta pasando en segundo plano y corregir errores.
 app.use(express.urlencoded({extended: false}));//metodo que se encarga de poder entender los datos que envia el cliente desde el browser a el servidor, el extend false es porque solo se recibe texto
-app.use(express.static(path.join(__dirname, 'views/css')));//aqui busca en esa ruta la carpeta css __dirname es el path de la carpeta definida como fuente o root en este caso src
-app.use(express.static(path.join(__dirname, 'views/js')));//aqui busca en esa ruta la carpeta js __dirname es el path de la carpeta definida como fuente o root en este caso src
-app.use(express.static(path.join(__dirname, 'views/media')));//aqui busca en esa ruta la carpeta media, __dirname es el path de la carpeta definida como fuente o root en este caso src
 app.use('/static', express.static(__dirname + '/public'));
 
 //routes

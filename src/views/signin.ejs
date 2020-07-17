@@ -1,16 +1,51 @@
+<%- include('partials/_header.ejs') %>
 <% if (signinMessage){ %>
     <div><%= signinMessage%></div>
 <%}%>
 <% if (failpassword){ %>
     <div><%= failpassword%></div>
 <%}%>
+<% if (signupMessageemail){ %>
+    <div><%= signupMessageemail%></div>
+<%}%>
+
+<section>
+        <div class="container">
+                <div class="user signinBx">
+                    <div class="imgBx"><img src="/static/media/imagenantorcha.png"></div>
+                    <div class="formBx">  
+                        <form action="/" method="POST">
+                                
+                                        <h2>Inicia Sesión</h2>
+                                        <input type="email" name="email" placeholder="Usuario" id="">
+                                        <input type="password" name="password" placeholder="Contraseña" id="">
+                                        <input type="submit" name="" value="Ingresa">
+                                        <p class="Signup"> <a href="#" onclick="toggleForm();">Crea una cuenta</a></p>
+                               
+                        </form>
+                    </div>
+                </div>
+                <div class="user signupBx">
+                        <div class="formBx">  
+                            <form action="/signup" method="POST">
+                                    
+                                            <h2>Crea una cuenta</h2>
+                                            <input type="email" name="email" placeholder="inserta tu Usuario" id="">
+                                            <input type="password" name="password" placeholder="inserta tu Contraseña" id="">
+                                            <input type="submit" name="" value="Registrate">
+                                            <p class="Signup"> <a href="#" onclick="toggleForm();" >Inicia Sesión</a></p>
+                            </form>
+                        </div>
+                        <div class="imgBx"><img src="/static/media/imagenantorcha.png"></div>
+                </div>
+        </div>
+</section>
+<script type="text/javascript">
+function toggleForm(){
+    var container = document.querySelector('.container');
+    container.classList.toggle('active')
+}
+</script>
 
 
-<form action="/" method="POST">
-<input type="email" name="email" id="" placeholder="Inserte su correo">
-<input type="password" name="password" id="">
-<button type="submit">
-    Inicia Sesión
-</button>
-<a href="/signup" type="button" class="btn btn-lg btn-block btn-outline-primary">ó Registrate</a>
-</form>
+
