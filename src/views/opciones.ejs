@@ -1,47 +1,44 @@
 <%- include('partials/_header.ejs') %>
 
-<div class="container">
-	<p></p>
-	<p></p>
-	<p></p>
+<div class="grid-opciones">
+	<div class="card"> 
+		<div class="tittle">
+				<h4 class="tittle">Informe por IP</h4>
+		</div>
+		 <div class="boton">
+			 <div class="enunciado">
+					En este apartado podra encontrar un Informe de
+					coincidencias en dirección IP las cuales nos muestran
+					que estudiantes respondieron el examén en el mismo lugar el examen
+			 </div>
+				<div class="enlace">
+						<a href="/subseccion/<%=seccion%>" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+				</div>	
+		 </div>	 
+	</div>
+	<div class="card"> 
+			<div class="tittle">
+					<h4 class="tittle">Informe por Coincidencias</h4>
+			</div>
+			 <div class="boton">
+				 <div class="enunciado">
+						En este apartado podra encontrar
+						un Informe de coincidencias en las respuestas
+						del examen de cada alumno con respecto al resto del curso
+				 </div>
+				 <div class="enlace">
+						<a href="/coincidencia/<%=seccion%>" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
+				</div>
+				
+			 </div>	 
+		</div>
+
 </div>
 	
 		
-<div class="container">
-		<div class="card-deck mb-3 text-center">
-		  <div class="card mb-6 box-shadow">
-			<div class="card-header">
-			  <h4 class="my-0 font-weight-normal">Informe por IP</h4>
-			</div>
-			<div class="card-body">
-			  <ul class="list-unstyled mt-3 mb-4">
-					<li>En este apartado podra encontrar un Informe de</li>
-					<li>coincidencias en dirección IP las cuales nos muestran</li>
-					<li>que estudiantes respondieron en el mismo lugar el examen</li>
-			</ul>
-			  <a href="/subseccion/<%=seccion%>" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
-			</div>
-		  </div>
-		  <div class="card mb-6 box-shadow">
-			<div class="card-header">
-			  <h4 class="my-0 font-weight-normal">Informe por Coincidencia</h4>
-			</div>
-			<div class="card-body">
-					
-					<ul class="list-unstyled mt-3 mb-4">
-							<li>En este apartado podra encontrar</li>
-							<li>un Informe de coincidencias en las respuestas</li>
-							<li>del examen de cada alumno con respecto al resto del curso</li>
-					</ul>
-					<a href="/coincidencia/<%=seccion%>" type="button" class="btn btn-lg btn-block btn-outline-primary">Informe</a>
-			</div>
-		  </div>
-		 
-		</div>
+
 		
-  
-		
-	  </div>
+	  
 				 
 
     <%- include('partials/_footer.ejs') %>

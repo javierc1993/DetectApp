@@ -1,11 +1,17 @@
-
 *
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins',sans-serif;
+    text-rendering: optimizeLegibility;
 }
+body { 
+    min-width: 360px;
+    background: #f5f5f5;
+    color: #333;
+  }
+  
 section
 {
 position: relative;
@@ -15,6 +21,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 padding: 20px;
+
 }
 section .container
 {
@@ -158,9 +165,246 @@ section .container.active .signinBx .imgBx
 {
     left:-100%;
 }
+.navigation
+{
+    padding: 1%;
+    
+    background: #677eff;
+    width: 100%;
+}
+.navigation #nav li
+{
+    padding: 10px;
+    list-style: none;
+    display: inline;
+    
+}
+.navigation #nav li a
+{
+    text-decoration: none;
+}
 
+.navigation #nav .Logo 
+{
+float: left;
+font-size: 20px;
+}
+.navigation #nav  .close
+{
+float: right;
+}
+.grid
+{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1em;
+padding-right: 10px;
+padding-left:10px;
+margin-top: 10px;
+}
+.grid-opciones
+{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1em;
+padding-right: 10px;
+padding-left:10px;
+margin-top: 10px;
+}
+.grid-ip
+{
+display: grid;
+grid-template-columns: repeat(8, 1fr);
+gap: 1em;
+padding-right: 10px;
+padding-left:10px;
+margin-top: 10px;
+}
+.grid .card
+{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 240px;
+    background: #f5f5f5;
+    border-color: #bebebe;
+    box-shadow: 0 1px 4px 0 rgba(0,117,180,0.4);
+}
+.grid-opciones .card
+{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 240px;
+    background: #f5f5f5;
+    border-color: #bebebe;
+    box-shadow: 0 1px 4px 0 rgba(0,117,180,0.4);
+}
+.grid-ip .card-ip
+{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 50px;
+    background: #f5f5f5;
+    border-color: #bebebe;
+    box-shadow: 0 1px 4px 0 rgba(0,117,180,0.4);
+}
+.grid div:hover
+    {
+        background: #677eff;
+    }
+.grid .card .tittle
+{
+    height:20%;
+    background: #bebebe;
+    padding: 2px 16px;  
+}
+.grid-ip .card-ip .tittle
+{
+    height:50%;
+    background: #bebebe;
+    padding: 2px 16px;  
+}
+.titulo-ip h1{
+    margin-top: 10px;
+    margin-bottom:10px;
+    text-align: center;
+    font-size: 225%
+}
+.grid-opciones .card .tittle
+{
+    height:30%;
+    background: #bebebe;
+    padding: 2px 16px;  
+}
+.grid .card .tittle h4
+{
+ margin-top: 5px;
+ font-size: 1.2vw;
+ text-align: center;
+ font-family: sans-serif;
+}
+.grid-opciones .card .tittle h4
+{
+ margin-top:10px;
+ font-size: 25px;
+ text-transform: uppercase;
+ text-align: center;
+ font-family: sans-serif;
+}
+.grid-ip .card-ip .tittle h4
+{
+ margin-top:5px;
+ font-size: 15px;
+ text-transform: uppercase;
+ text-align: center;
+ font-family: sans-serif;
+}
+.grid-opciones .card .boton .enunciado 
+    {
+        font-size: 100%;
+       margin-bottom: 10%;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 10px;
+        text-align: justify;
+    }
+    .grid-opciones .card .boton .enlace
+{
+    align-items: center;
+    text-align: center;
+}
+.grid-ip .card-ip  .enunciado
+{
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 5px;
+}
+.grid-ip .card-ip  .enunciado a
+{
+    text-decoration: none;
+}
+.grid .card .boton 
+{
+    margin-top: 40%;
+    align-items: center;
+    text-align: center;
+}
+.grid .card .boton a
+{
+    text-decoration: none;
+}
+footer
+{
+    position: relative;
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 20px;
+}
+@media(max-width:600px)
+{
+    .navigation
+{
+    padding: 1%;
+    
+    background: #677eff;
+    width: 100%;
+}
+footer
+{
+    position: relative;
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 20px;
+}
+    .grid, .grid-opciones
+    {
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
+    .grid-opciones .card 
+    {
+        width:350px;
+    }
+    
+    .grid-opciones .card .boton .enunciado
+    {
+        margin-left: 15px;
+        width:90%;
+    }
+    .grid-opciones .card .tittle
+    {
+        height:30%;
+        background: #bebebe;
+    }
+    .grid-opciones .card .tittle h4
+    {
+        margin-top: 5px;
+        font-size: 160%;
+        text-align: center;
+        font-family: sans-serif;
+    }
+    .grid .card .tittle h4
+    {
+        margin-top: 5px;
+        font-size: 100%;
+        text-align: center;
+        font-family: sans-serif;
+    }
+    
+}
 @media (max-width:700px)
 {
+    .grid .card .tittle h4
+    {
+     margin-top: 5px;
+     font-size: 70%;
+     text-align: center;
+     font-family: sans-serif;
+    }
     section .container
     {
         max-width: 400px;
@@ -173,6 +417,4 @@ section .container.active .signinBx .imgBx
     {
         width: 100%;
     }
-
-
 }
