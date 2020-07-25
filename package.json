@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "dev1": "cross-env NODE_ENV=development nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,8 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
