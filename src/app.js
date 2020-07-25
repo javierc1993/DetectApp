@@ -9,11 +9,12 @@ const session = require('express-session');
 const flash= require('connect-flash');
 const usr_db= process.env.USER_DB;
 const pass_db=process.env.PASS_DB;
+const mongo_uri=process.env.MONGO_URI;
 require('./passport/local-auth');
-console.log( process.env.NODE_ENV);
+
  
 //conexión a la base de datos
-mongoose.connect('mongodb+srv://'+usr_db+':'+pass_db+'@estrategiasevaluativas2.km7om.gcp.mongodb.net/EstrategiasEvaluativas2?retryWrites=true&w=majority',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
+mongoose.connect(mongo_uri,{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
 //mongoose.connect('mongodb://localhost/EstrategiasEvaluativas2',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
 .then(db => console.log('conexión exitosa')) //mensajes de conexión (promesa de conexión)
 .catch(err => console.log(err));
