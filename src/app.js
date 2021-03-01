@@ -14,7 +14,8 @@ require('./passport/local-auth');
 
  
 //conexión a la base de datos
-mongoose.connect(mongo_uri,{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
+//mongoose.connect(mongo_uri,{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
+mongoose.connect('mongodb+srv://javierc:0FPgnzYFQvjAiWpt@detectapp.8somp.mongodb.net/EstrategiasEvaluativas2',{ useNewUrlParser: true,useUnifiedTopology: true })
 //mongoose.connect('mongodb://localhost/EstrategiasEvaluativas2',{ useNewUrlParser: true,useUnifiedTopology: true })//conectar desde el modulo mongoose con mongo DB
 .then(db => console.log('conexión exitosa')) //mensajes de conexión (promesa de conexión)
 .catch(err => console.log(err));

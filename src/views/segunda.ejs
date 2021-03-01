@@ -1,28 +1,64 @@
 <%- include('partials/_header.ejs') %>
-
-<div class="container">
-	<p></p>
-	<p></p>
-	<p></p>
-</div>
-<div class="container">	
-		<div class="card-deck mb-3 text-center">
-				<%=task.length%>
-<% repetidos.forEach((value,index)=>{ %>
-	<%let infoindex= index+1 %>
-			<div class="card mb-4 box-shadow text-center">
-			  	<div class="card-header">
-					<h6 class="my-0 font-weight-normal">Examen <%=infoindex%></h6>
-				</div>
-				<div class="card-body">
-					<a href="/seccion/<%=value%>" type="button" class="btn btn-lg btn-block btn-outline-primary" font-size="2px">Informe</a>
-				</div>
-			</div>	
-	
-	<%});%>
-		</div>
-		
- </div>
-				 
+<body>
+		<div class="container">
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+			<div class="container-fluid" style="align-content: center; border-color: blue">	
+					
+					<div class="row text-center" >
+							<% repetidos.forEach((value,index)=>{ %>
+								<%let infoindex= index+1 %>
+								<% if (value==="e064cc20535545c8b8f88c6404439504"){%>
+									<%infoindex="Modulo 1"%>
+								<%} else if (value=="a1738791ea634978b046a644f2a4e02a"){%>
+									<%infoindex="Modulo 2"%>
+								<%} else if (value=="bdf831fafb714e45a22eec3b4a4b23d9"){%>
+									<%infoindex="Modulo 3"%>
+								<%} else if (value=="29f7f9b2b9dd429aabc4e864c58b43c2"){%>
+									<%infoindex="Modulo 4"%>
+								<%} else if (value=="45502d4d5e854ee99b0ffaa70e0aae34"){%>
+									<%infoindex="Final"%>
+								<%} else if (value=="c3edcb507eed445db8612923113593a2"){%>
+									<%infoindex=" Final Supletorio"%>
+								<%} else {%>
+									<%infoindex="Habilitación"%>
+								<%}%>
+								
+								<div class="col-lg-3 col-md-6 mb-4">
+										<div class="card h-100">
+												<div class="card-header">
+													
+												  <h6 class="my-0 font-weight-normal">Examen <%=infoindex%></h6>
+									
+											  </div>
+											  <div class="card-body">
+												  <div class="container">
+													  <div class="row">
+															<div class="col">
+																
+																	<a href="/coincidencia/<%=value%>" type="button" class="btn btn-outline-primary " font-size="0.5px">Informe por Coincidencias</a>
+															  </div>
+														  <div class="col">
+																<a href="/subseccion/<%=value%>" type="button" class="btn btn-outline-primary " font-size="2px">Informe por IP   </a>
+														  </div>
+													  </div>
+												  </div>
+												  
+												</div>
+										  </div>	
+								</div>
+										
+								
+								<%});%>
+					</div>	
+			
+					
+					
+			 </div>
+						
+</body>
+	 
 
     <%- include('partials/_footer.ejs') %>

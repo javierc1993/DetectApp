@@ -1,0 +1,173 @@
+<%- include('partials/_header.ejs') %>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+              <div class="col-4">
+                                        <table class="table table-bordered table-hover table-sm">
+                                                <thead>
+                                                        <th>#</th>
+                                                        <th>Estudiante modulo1</th>
+                                                        <th>grupo de trabajo</th>
+                                                </thead>
+                                                <tbody>
+            
+                                                            <% for(var z=0; z<Modulo1.length; z++) { %>
+                                                                <tr>
+                                                                    <td><%=z+1%> </td>
+                                                                    <td>
+                                                                            <%= Modulo1[z].nombre %>
+                                                                    </td>
+                                                                    <td>
+                                                                            <%= Modulo1[z].ip%>
+                                                                    </td>
+                                                                </tr>
+                                                            <%}%>		
+                                                </tbody>		
+                                        </table>    
+              </div>
+            <div class="col-4">
+                            <table class="table table-bordered table-hover table-sm">
+                                    <thead>
+                                            <th>#</th>
+                                            <th>Estudiante modulo 2</th>
+                                            <th>grupo de trabajo</th>
+                                    </thead>
+                                    <tbody>
+
+                                                <% for(var z=0; z<Modulo2.length; z++) { %>
+                                                    <tr>
+                                                        <td><%=z+1%> </td>
+                                                        <td>
+                                                                <%= Modulo2[z].nombre %>
+                                                        </td>
+                                                        <td>
+                                                                <%= Modulo2[z].ip%>
+                                                        </td>
+                                                    </tr>
+                                                <%}%>		
+                                    </tbody>		
+                            </table>    
+             </div>
+            <div class="col-4">
+                <table class="table table-bordered table-hover table-sm">
+                        <thead>
+                                <th>#</th>
+                                <th>Estudiante modulo3</th>
+                                <th>grupo de trabajo</th>
+                        </thead>
+                        <tbody>
+
+                                    <% for(var z=0; z<Modulo3.length; z++) { %>
+                                        <tr>
+                                            <td><%=z+1%> </td>
+                                            <td>
+                                                    <%= Modulo3[z].nombre %>
+                                            </td>
+                                            <td>
+                                                    <%= Modulo3[z].ip%>
+                                            </td>
+                                        </tr>
+                                    <%}%>		
+                        </tbody>		
+                </table>    
+            </div>
+            <div class="col-4">
+                    <table class="table table-bordered table-hover table-sm">
+                            <thead>
+                                    <th>#</th>
+                                    <th>Estudiante modulo4</th>
+                                    <th>grupo de trabajo</th>
+                            </thead>
+                            <tbody>
+    
+                                        <% for(var z=0; z<Modulo4.length; z++) { %>
+                                            <tr>
+                                                <td><%=z+1%> </td>
+                                                <td>
+                                                        <%= Modulo4[z].nombre %>
+                                                </td>
+                                                <td>
+                                                        <%= Modulo4[z].ip%>
+                                                </td>
+                                            </tr>
+                                        <%}%>		
+                            </tbody>		
+                    </table>    
+            </div>
+            <div class="col-4">
+                        <table class="table table-bordered table-hover table-sm">
+                                <thead>
+                                        <th>#</th>
+                                        <th>Estudiante final</th>
+                                        <th>grupo de trabajo</th>
+                                </thead>
+                                <tbody>
+        
+                                            <% for(var z=0; z<examenfinal.length; z++) { %>
+                                                <tr>
+                                                    <td><%=z+1%> </td>
+                                                    <td>
+                                                            <%= examenfinal[z].nombre %>
+                                                    </td>
+                                                    <td>
+                                                            <%= examenfinal[z].ip%>
+                                                    </td>
+                                                </tr>
+                                            <%}%>		
+                                </tbody>		
+                        </table>    
+             </div>
+            <div class="col-4">
+                            <table class="table table-bordered table-hover table-sm">
+                                    <thead>
+                                            <th>#</th>
+                                            <th>Estudiante supletorio</th>
+                                            <th>grupo de trabajo</th>
+                                    </thead>
+                                    <tbody>
+            
+                                                <% for(var z=0; z<examenfinalsupletorio.length; z++) { %>
+                                                    <tr>
+                                                        <td><%=z+1%> </td>
+                                                        <td>
+                                                                <%= examenfinalsupletorio[z].nombre %>
+                                                        </td>
+                                                        <td>
+                                                                <%= examenfinalsupletorio[z].ip%>
+                                                        </td>
+                                                    </tr>
+                                                <%}%>		
+                                    </tbody>		
+                            </table>    
+            </div>
+            <div class="col-4">
+                                <table class="table table-bordered table-hover table-sm">
+                                        <thead>
+                                                <th>#</th>
+                                                <th>Estudiante habilitacion</th>
+                                                <th>grupo de trabajo</th>
+                                        </thead>
+                                        <tbody>
+                
+                                                    <% for(var z=0; z<habilitacion.length; z++) { %>
+                                                        <tr>
+                                                            <td><%=z+1%> </td>
+                                                            <td>
+                                                                    <%= habilitacion[z].nombre %>
+                                                            </td>
+                                                            <td>
+                                                                    <%= habilitacion[z].ip%>
+                                                            </td>
+                                                        </tr>
+                                                    <%}%>		
+                                        </tbody>		
+                                </table>    
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<%- include('partials/_footer.ejs') %>

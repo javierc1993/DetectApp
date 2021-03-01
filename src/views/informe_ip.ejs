@@ -1,13 +1,31 @@
 <%- include('partials/_header.ejs') %>
 
-
+<div class="jumbotron text-center">
+		<h1>Informe por Grupos de Trabajo</h1>
+		<div style="display: inline">
+				<div style="display: inline">
+					<button id="mostrar" class="btn btn-info" type="button"
+					onclick="document.getElementById('1405').style.display= 'block';document.getElementById('1404').style.display= 'none';document.getElementById('1403').style.display= 'none';document.getElementById('1404').style.display= 'none';">Listado de Estudiantes en este grupo de trabajo</button>
+			</div>
+		
+		
+			<div style="display: inline">
+					<button id="mostrar4" class="btn btn-info" type="button"
+						onclick="document.getElementById('1404').style.display= 'block';document.getElementById('1401').style.display = 'none';document.getElementById('1402').style.display = 'none';document.getElementById('1404').style.display = 'none';">Estudiantes detectados</button>
+		
+			</div>
+						
+		</div>
+		<p>
+			Número de estudiantes detectados en este grupo de trabajo: <%=busqinforme.length%>
+		</p>
+		
+</div>
 	
 		
-		<div id="boton" class="boton">
-				<button id="mostrar" class="btn btn-info" type="button" onclick="document.getElementById('1405').style.display= 'block';document.getElementById('mostrar').style.display = 'none';">Mostrar Más</button>
-		</div>																	 
-		<div id="1405" class="row"  style="display: none;">
-			<button id="ocultar" class="btn btn-info" type="button" onclick="document.getElementById('1405').style.display= 'none';document.getElementById('mostrar').style.display = 'block';">Mostrar menos</button>
+																		 
+		<div id="1405" class="row" style="display: block">
+		
 			<div class="col-md-12"> 
 					   <table class="table table-bordered table-hover">
 							   <thead>
@@ -30,7 +48,7 @@
 												   
 												   <td><%=obj.datos[i].estudiante1%></td>
 												   <td><%=obj.datos[i].estudiante2%></td>
-												   <td><%=obj.datos[i].coincidencias%></td>
+												   <td><%=obj.datos[i].coincidencias%>%</td>
 												   <td><%=obj.datos[i].horaestudiante1%></td>
 												   <td><%=obj.datos[i].horaestudiante2%></td>
 												   <td><%=obj.datos[i].fecha%></td>
@@ -44,6 +62,42 @@
 				</div>
 			</div>
 	
+			<div class="container-fluid" id="1404" style="display: none;">
+					<div class="row justify-content-md-center">
+					<div class="col-md-auto">
+						
+								<table class="table table-bordered table-hover">
+										<thead>
+												<th>#</th>
+												<th>Estudiante</th>
+												<th>grupo de trabajo</th>
+										</thead>
+										<tbody>
 	
+													<% for(var z=0; z<busqinforme.length; z++) { %>
+														<tr>
+															<td><%=z+1%> </td>
+															<td>
+																	<%= busqinforme[z].nombre %>
+															</td>
+															<td>
+																	<%= busqinforme[z].ip%>
+															</td>
+														</tr>
+													<%}%>		
+										</tbody>		
+								</table>
+						
+							
+					</div>
+					</div>
+					<div class="row justify-content-md-center" >
+							<button id="ocultar" class="btn btn-info" type="button"
+							onclick="document.getElementById('1404').style.display= 'none';">Mostrar menos</button>
+					</div>
+	
+					
+						
+			</div>
 
     <%- include('partials/_footer.ejs') %>

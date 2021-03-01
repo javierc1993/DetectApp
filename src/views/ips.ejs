@@ -1,34 +1,39 @@
 <%- include('partials/_header.ejs') %>
-	<div class="titulo-ip">
-				<h1>
-						Hay <%=repetidos.length%> Grupos de trabajo
-				</h1>
-	</div>
-	<div class="grid-ip">
-				
-					<% if(repetidos.length==0){%>
-						<div class="card-titulo">
-						<h4>No hay direcciones ip coincidentes</h4>
-					    </div>
-						<%}%>
-						
-						<% for(var j=0; j<repetidos.length; j++) { %>
-							
-								<div class="card-ip">
-									<div class="tittle">
-											<h4> Direccion IP</h4>
-									</div>
-									<div class="enunciado">
-											<% let dir_ip  %>
-											<% dir_ip = repetidos[j]%>
-										<a href="/ipseccion/<%=dir_ip%>/<%=subseccion%>"><p><%=repetidos[j]%></p></a>
-									</div>		
-								</div>
-								<%}%>
-							
+
+
+<div class="jumbotron text-center">
+		<h1>Grupos de trabajo detectados</h1>
+		<p>
+				Hay <%=repetidos.length%> Grupos de trabajo
+				<% if(repetidos.length==0){%>
 					
-				
-			</div>			
+					<h4>No hay direcciones ip coincidentes</h4>
+
+					<%}%>
+		</p>
+
+</div>
+
+<body>
+	<div class="row text-center">
+			<% for(var j=0; j<repetidos.length; j++) { %>
+					<% let dir_ip  %>
+					<% dir_ip = repetidos[j]%>
+					<div class="col-lg-3 col-md-6 mb-4">
+							<div class="card h-100">
+									<div class="card-body">
+											<h4 class="card-title">DIRECCIÓN IP <%=dir_ip%> </h4>
+									</div>
+									<div class="card-footer">
+											
+										<a href="/ipseccion/<%=dir_ip%>/<%=subseccion%>" class="btn btn-outline-primary btn-sm">Ver grupo de trabajo<p></p></a>
+									</div>
+							</div>
+					</div>
+		    <%}%>
+	</div>
+</body>
+			
 		 	
     <%- include('partials/_footer.ejs') %>
     
