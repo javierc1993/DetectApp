@@ -10,17 +10,7 @@ const passport = require('passport');
 //routes//
 
 //passport manejo de sesiones//
-router.get('/crearmodelo/:email/:password',async (req,res)=>{
-  const {email}= req.params;
-  const {password}=req.params;
-  const newModel = new Task();
-  newModel.username = email;
-  newModel.dir_ip = password;
-  console.log(newModel);
-  await newModel.save();
-  done(null, newModel);
 
-});
 //pagina inicial//
 router.get('/', (req, res, next)=>{
   res.render('signin',{
