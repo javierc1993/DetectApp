@@ -9,29 +9,30 @@
 				<div style="display: inline">
 						<div style="display: inline">
 							<button id="mostrar" class="btn btn-info" type="button"
-							onclick="document.getElementById('1401').style.display= 'block';document.getElementById('1402').style.display= 'none';document.getElementById('1403').style.display= 'none';document.getElementById('1404').style.display= 'none';">Listado de Estudiantes por coincidencias</button>
+							onclick="document.getElementById('1401').style.display= 'block';document.getElementById('detectados').style.display = 'block';document.getElementById('1402').style.display= 'none';document.getElementById('1403').style.display= 'none';document.getElementById('1404').style.display= 'none';document.getElementById('completo').style.display= 'none';">Listado de Estudiantes por coincidencias</button>
 					</div>
 					<div style="display: inline">
 							<button id="mostrar2" class="btn btn-info" type="button"
-							onclick="document.getElementById('1402').style.display= 'block';document.getElementById('1401').style.display= 'none';document.getElementById('1403').style.display= 'none';document.getElementById('1404').style.display = 'none';">Listado con porcentajes</button>
+							onclick="document.getElementById('1402').style.display= 'block';document.getElementById('detectados').style.display = 'block';document.getElementById('1401').style.display= 'none';document.getElementById('1403').style.display= 'none';document.getElementById('1404').style.display = 'none';document.getElementById('completo').style.display= 'none';">Listado con porcentajes</button>
 	
 			 		</div>
 						
 				     <div style="display: inline">
 						<button id="mostrar3" class="btn btn-info" type="button"
-							onclick="document.getElementById('1403').style.display= 'block';document.getElementById('1401').style.display = 'none';document.getElementById('1402').style.display = 'none';document.getElementById('1404').style.display = 'none';">Listado completo de estudiantes</button>
+							onclick="document.getElementById('1403').style.display= 'block';document.getElementById('detectados').style.display = 'block';document.getElementById('1401').style.display = 'none';document.getElementById('1402').style.display = 'none';document.getElementById('1404').style.display = 'none';document.getElementById('completo').style.display= 'none';">Listado completo de estudiantes</button>
 			
 					</div>
 					<div style="display: inline">
 							<button id="mostrar4" class="btn btn-info" type="button"
-								onclick="document.getElementById('1404').style.display= 'block';document.getElementById('1401').style.display = 'none';document.getElementById('1402').style.display = 'none';document.getElementById('1403').style.display = 'none';">Estudiantes detectados</button>
+								onclick="document.getElementById('1404').style.display= 'block';document.getElementById('completo').style.display= 'block';document.getElementById('1401').style.display = 'none';document.getElementById('1402').style.display = 'none';document.getElementById('1403').style.display = 'none';document.getElementById('detectados').style.display = 'none';">Estudiantes detectados</button>
 				
 					</div>
 								
 				</div>
-				<p>
+				<p id="detectados">
 					Número de estudiantes detectados por coincidencias: <%=uniqs.length%>
 				</p>
+			<p ><span style="display: none;" id="completo" title="cantidad de estudiantes que cumplen los tres parametros">*Número de estudiantes detectados en este examén: <%=busqinforme.length%></span></p>	 
 				
 		</div>
 		<div class="container-fluid" id="1401" style="display: block;">
