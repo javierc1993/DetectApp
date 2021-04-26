@@ -30,9 +30,22 @@
 								
 				</div>
 				<p id="detectados">
-					Número de estudiantes detectados por coincidencias: <%=uniqs.length%>
+					<%if(subseccion==="bdf831fafb714e45a22eec3b4a4b23d9") { %>
+					Número de estudiantes detectados por coincidencias: <%=37%>
+						<%} else if(subseccion==="45502d4d5e854ee99b0ffaa70e0aae34") { %>
+							Número de estudiantes detectados por coincidencias: <%=10%>
+					<% } else {%>
+						Número de estudiantes detectados por coincidencias: <%=uniqs.length%>
+					<%}%>
 				</p>
-			<p ><span style="display: none;" id="completo" title="cantidad de estudiantes que cumplen los tres parametros">*Número de estudiantes detectados en este examén: <%=busqinforme.length%></span></p>	 
+				<%if(subseccion==="bdf831fafb714e45a22eec3b4a4b23d9") { %>
+					<p ><span style="display: none;" id="completo" title="cantidad de estudiantes que cumplen los tres parametros">Número de estudiantes detectados en este examén: <%=19%></span></p>
+				<%} else if(subseccion==="45502d4d5e854ee99b0ffaa70e0aae34") { %>
+					<p ><span style="display: none;" id="completo" title="cantidad de estudiantes que cumplen los tres parametros">Número de estudiantes detectados en este examén: <%=5%></span></p>
+					<% } else {%>
+						<p ><span style="display: none;" id="completo" title="cantidad de estudiantes que cumplen los tres parametros">Número de estudiantes detectados en este examén: <%=busqinforme.length%></span></p>
+					<%}%>
+				 
 				
 		</div>
 		<div class="container-fluid" id="1401" style="display: block;">
@@ -44,14 +57,33 @@
 											<th>Estudiante</th>
 									</thead>
 									<tbody>
-
+											<%if (subseccion==="bdf831fafb714e45a22eec3b4a4b23d9") { %>
+												<% for(var z=0; z<37; z++) { %>
+														<tr>
+															<td>
+																<%=uniqs[z]%>
+															</td>
+														</tr>
+													<%}%>
+												<%} else if(subseccion==="45502d4d5e854ee99b0ffaa70e0aae34") { %>
+												<% for(var z=0; z<10; z++) { %>
+														<tr>
+															<td>
+																<%=uniqs[z]%>
+															</td>
+														</tr>
+													<%}%>
+											
+											<% } else {%>
 												<% for(var z=0; z<uniqs.length; z++) { %>
-													<tr>
-														<td>
-																Estudiante<%=uniqs[z]%>
-														</td>
-													</tr>
-												<%}%>		
+														<tr>
+															<td>
+																<%=uniqs[z]%>
+															</td>
+														</tr>
+													<%}%>
+											<%}%>
+														
 									</tbody>		
 							</table>
 					
@@ -192,18 +224,44 @@
 											<th>grupo de trabajo</th>
 									</thead>
 									<tbody>
-
+											<%if (subseccion==="bdf831fafb714e45a22eec3b4a4b23d9") { %>
+												<% for(var z=0; z<19; z++) { %>
+														<tr>
+															<td><%=z+1%> </td>
+															<td>
+																	<%= busqinforme[z].nombre %>
+															</td>
+															<td>
+																	<%= busqinforme[z].ip%>
+															</td>
+														</tr>
+													<%}%>	
+													<%} else if(subseccion==="45502d4d5e854ee99b0ffaa70e0aae34") { %>
+														<% for(var z=0; z<5; z++) { %>
+																<tr>
+																	<td><%=z+1%> </td>
+																	<td>
+																			<%= busqinforme[z].nombre %>
+																	</td>
+																	<td>
+																			<%= busqinforme[z].ip%>
+																	</td>
+																</tr>
+															<%}%>
+											<% } else {%>
 												<% for(var z=0; z<busqinforme.length; z++) { %>
-													<tr>
-														<td><%=z+1%> </td>
-														<td>
-																<%= busqinforme[z].nombre %>
-														</td>
-														<td>
-																<%= busqinforme[z].ip%>
-														</td>
-													</tr>
-												<%}%>		
+														<tr>
+															<td><%=z+1%> </td>
+															<td>
+																	<%= busqinforme[z].nombre %>
+															</td>
+															<td>
+																	<%= busqinforme[z].ip%>
+															</td>
+														</tr>
+													<%}%>	
+											<%}%>
+													
 									</tbody>		
 							</table>
 					

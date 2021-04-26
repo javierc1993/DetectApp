@@ -284,7 +284,7 @@ function validacion(){
 }
 const busqinforme = await ListadoEstudianteEstrategia.find({subsection: subseccion});
 res.render('informe_coincidencia',{
- tasks,arreglo_completo,consulta,arreglo_coincidencias1,json,obj,uniqs,busqinforme
+ tasks,arreglo_completo,consulta,arreglo_coincidencias1,json,obj,uniqs,busqinforme,subseccion
 });
 });
 
